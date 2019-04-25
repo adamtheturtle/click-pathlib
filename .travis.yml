@@ -1,5 +1,9 @@
 language: python
 python: 3.5
+addons:
+  apt:
+    packages:
+    - enchant
 before_install:
 - travis_retry pip install --upgrade pip setuptools
 install:
