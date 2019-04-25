@@ -23,11 +23,11 @@ Usage
 
    import click
    import click_pathlib
-   
+
    @click.command('delete')
    @click.argument(
        'existing_file',
-       type=click_pathlib.ClickPathlibPath(exitst=True),
+       type=click_pathlib.Path(exists=True),
    )
    def delete(existing_file):
        existing_file.unlink()
@@ -43,12 +43,12 @@ Contributing
 See `CONTRIBUTING.rst <./CONTRIBUTING.rst>`_.
 
 .. |Build Status| image:: https://travis-ci.com/adamtheturtle/click-pathlib.svg?branch=master
-    :target: https://travis-ci.com/adamtheturtle/sphinx-substitution-extensions
+    :target: https://travis-ci.com/adamtheturtle/click-pathlib
 .. _@jeremyh: https://github.com/jeremyh
 .. |codecov| image:: https://codecov.io/gh/adamtheturtle/click-pathlib/branch/master/graph/badge.svg
   :target: https://codecov.io/gh/adamtheturtle/click-pathlib
 .. |requirements| image:: https://requires.io/github/adamtheturtle/click-pathlib/requirements.svg?branch=master
-     :target: https://requires.io/github/adamtheturtle/sphinx-substitution-extensions/requirements/?branch=master
+     :target: https://requires.io/github/adamtheturtle/click-pathlib/requirements/?branch=master
      :alt: Requirements Status
-.. |PyPI| image:: https://badge.fury.io/py/Sphinx-Substitution-Extensions.svg
-    :target: https://badge.fury.io/py/Sphinx-Substitution-Extensions
+.. |PyPI| image:: https://badge.fury.io/py/click-pathlib.svg
+    :target: https://badge.fury.io/py/click-pathlib
