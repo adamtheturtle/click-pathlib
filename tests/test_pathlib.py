@@ -12,8 +12,8 @@ def test_example(tmp_path: Path) -> None:
         # type=click_pathlib.Path(exists=True),
     )
     def delete(existing_file: Path) -> None:
-        pass
-        # assert isinstance(existing_file, Path)
+        assert isinstance(existing_file, Path)
+        existing_file.unlink()
 
     runner = CliRunner()
     result = runner.invoke(
@@ -23,3 +23,4 @@ def test_example(tmp_path: Path) -> None:
     )
     import pdb; pdb.set_trace()
     assert result.exit_code == 0
+    assert not tmp_path.exists()
