@@ -19,6 +19,8 @@ This supports Python 3.5+.
 Usage
 ~~~~~
 
+Use the ``click_pathlib.Path`` just like a ``click.Path`` type and your function will receive a ``pathlib.Path``.
+
 .. code:: python
 
    import click
