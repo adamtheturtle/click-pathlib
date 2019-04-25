@@ -1,8 +1,9 @@
 from pathlib import Path
 
 import click
-import click_pathlib
 from click.testing import CliRunner
+
+import click_pathlib
 
 
 def test_example(tmp_path: Path) -> None:
