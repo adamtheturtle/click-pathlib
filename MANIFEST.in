@@ -1,0 +1,2 @@
+include versioneer.py
+include src/click_pathlib/_version.py
