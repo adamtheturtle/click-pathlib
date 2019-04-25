@@ -52,14 +52,11 @@ def create_github_release(
     """
     Create a tag and release on GitHub.
     """
-    changelog_url = (
-        'https://vws-python.readthedocs.io/en/latest/changelog.html'
-    )
     repository.create_git_tag_and_release(
         tag=version,
         tag_message='Release ' + version,
         release_name='Release ' + version,
-        release_message='See ' + changelog_url,
+        release_message='See CHANGELOG.rst',
         type='commit',
         object=repository.get_commits()[0].sha,
     )
@@ -93,7 +90,7 @@ def get_repo(github_token: str, github_owner: str) -> Repository:
     except UnknownObjectException:
         github_user_or_org = github_client.get_user(github_owner)
 
-    return github_user_or_org.get_repo('vws-python')
+    return github_user_or_org.get_repo('click-pathlib')
 
 
 def build() -> None:
