@@ -9,14 +9,12 @@ lint: \
     check-manifest \
     flake8 \
     isort \
-    linkcheck \
     mypy \
     pip-extra-reqs \
     pip-missing-reqs \
     pylint \
     pyroma \
     shellcheck \
-    spelling \
     vulture \
     yapf
 
