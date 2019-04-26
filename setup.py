@@ -23,7 +23,11 @@ _DIRECT_REQUIRES = _get_dependencies(
     requirements_file=Path('requirements.txt'),
 )
 
-INSTALL_REQUIRES = _DIRECT_REQUIRES
+_INDIRECT_REQUIRES = _get_dependencies(
+    requirements_file=Path('indirect-requirements.txt'),
+)
+
+INSTALL_REQUIRES = _DIRECT_REQUIRES + _INDIRECT_REQUIRES
 
 DEV_REQUIRES = _get_dependencies(
     requirements_file=Path('dev-requirements.txt'),
