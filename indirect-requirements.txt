@@ -1,0 +1,2 @@
+# This works around https://github.com/kennethreitz/requests/issues/5067
+urllib3==1.24.2
