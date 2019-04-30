@@ -39,7 +39,7 @@ PACKAGING_REQUIRES = _get_dependencies(
 LONG_DESCRIPTION = Path('README.rst').read_text()
 
 setup(
-    name='click pathlib',
+    name='click-pathlib',
     version=versioneer.get_version(),  # type: ignore
     cmdclass=versioneer.get_cmdclass(),  # type: ignore
     author='Adam Dangoor',
