@@ -1,4 +1,4 @@
-PyGithub==1.43.7
+PyGithub==1.43.8
 autoflake==1.3
 check-manifest==0.39
 codecov==2.0.15
