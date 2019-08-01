@@ -4,7 +4,7 @@ check-manifest==0.39
 codecov==2.0.15
 dulwich==0.19.11
 flake8-commas==2.0.0
-flake8-quotes==2.0.1
+flake8-quotes==2.1.0
 flake8==3.7.8
 isort==4.3.21
 mypy==0.720
