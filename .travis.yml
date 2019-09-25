@@ -8,7 +8,6 @@ before_install:
 - travis_retry pip install --upgrade pip setuptools
 install:
 - travis_retry pip install --upgrade --editable .[dev]
-cache: pip
 script:
 - make lint
 - pytest -vvv --exitfirst tests/ --cov src --cov tests
