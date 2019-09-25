@@ -14,7 +14,7 @@ Installation
 
    $ pip install click-pathlib
 
-This supports Python 3.5+.
+This supports Python 3.7+.
 
 Usage
 ~~~~~
