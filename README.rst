@@ -19,7 +19,7 @@ This supports Python 3.8+.
 Usage
 ~~~~~
 
-Use the ``click_pathlib.Path`` just like a ``click.Path`` type and your function will receive a ``pathlib.Path``.
+Use the ``click_pathlib.Path`` just like a click.Path_ type and your function will receive a ``pathlib.Path``.
 
 .. code:: python
 
@@ -33,6 +33,8 @@ Use the ``click_pathlib.Path`` just like a ``click.Path`` type and your function
    )
    def delete(existing_file):
        existing_file.unlink()
+
+.. _click.Path: https://click.palletsprojects.com/en/7.x/api/#click.Path
 
 Credits
 -------
