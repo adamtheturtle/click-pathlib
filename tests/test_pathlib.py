@@ -7,6 +7,7 @@ import click_pathlib
 
 
 def test_example(tmp_path: Path) -> None:
+
     @click.command('delete')
     @click.argument(
         'existing_file',
