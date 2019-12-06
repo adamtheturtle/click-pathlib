@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import List
 
 import versioneer
-from setuptools import find_packages, setup
+from setuptools import setup
 
 
 def _get_dependencies(requirements_file: Path) -> List[str]:
@@ -36,39 +36,9 @@ PACKAGING_REQUIRES = _get_dependencies(
     requirements_file=Path('packaging-requirements.txt'),
 )
 
-LONG_DESCRIPTION = Path('README.rst').read_text()
-
 setup(
-    name='click-pathlib',
     version=versioneer.get_version(),  # type: ignore
     cmdclass=versioneer.get_cmdclass(),  # type: ignore
-    author='Adam Dangoor',
-    author_email='adamdangoor@gmail.com',
-    description=(
-        'A Python click type which is similar to click.Path but returns a '
-        'Pathlib path'
-    ),
-    long_description=LONG_DESCRIPTION,
-    packages=find_packages(where='src'),
-    zip_safe=False,
-    package_dir={'': 'src'},
     install_requires=INSTALL_REQUIRES,
-    keywords='click',
-    include_package_data=True,
-    license='MIT',
-    url='https://github.com/adamtheturtle/click-pathlib',
-    extras_require={
-        'dev': DEV_REQUIRES,
-    },
-    classifiers=[
-        'Operating System :: POSIX',
-        'Environment :: Web Environment',
-        'Programming Language :: Python :: 3.8',
-        'License :: OSI Approved :: MIT License',
-        'Development Status :: 5 - Production/Stable',
-    ],
-    # Avoid dependency links because they are not supported by Read The Docs.
-    #
-    # Also, they require users to use ``--process-dependency-links``.
-    dependency_links=[],
+    extras_require={'dev': DEV_REQUIRES},
 )
