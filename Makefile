@@ -2,9 +2,10 @@ SHELL := /bin/bash -euxo pipefail
 
 include lint.mk
 
+# Treat Sphinx warnings as errors
+SPHINXOPTS := -W
 
 .PHONY: lint
-# We do not currently run pydocstyle as we have to ignore vendored items.
 lint: \
     check-manifest \
     flake8 \
@@ -12,13 +13,13 @@ lint: \
     mypy \
     pip-extra-reqs \
     pip-missing-reqs \
-    pylint \
     pyroma \
     shellcheck \
     vulture \
+    pylint \
+    pydocstyle \
     yapf
 
-# Fix some linting errors.
 .PHONY: fix-lint
 fix-lint:
 	# Move imports to a single line so that autoflake can handle them.
@@ -26,5 +27,5 @@ fix-lint:
 	# Then later we put them back.
 	isort --force-single-line --recursive --apply
 	$(MAKE) autoflake
-	isort --recursive --apply
 	$(MAKE) fix-yapf
+	isort --recursive --apply

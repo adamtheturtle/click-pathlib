@@ -12,6 +12,7 @@ class Path(click.Path):
     """
     A Click path argument that returns a ``Path``, not a string.
     """
+
     def convert(
         self,
         value: str,
