@@ -53,7 +53,7 @@ def update_changelog(version: str, github_repository: Repository) -> None:
     )
 
 
-def build() -> None:
+def build_and_upload_to_pypi() -> None:
     """
     Build source and binary distributions.
     """
@@ -87,7 +87,7 @@ def main() -> None:
         type='commit',
         object=github_repository.get_commits()[0].sha,
     )
-    build()
+    build_and_upload_to_pypi()
 
 
 if __name__ == '__main__':
