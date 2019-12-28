@@ -7,12 +7,12 @@ import os
 import subprocess
 from pathlib import Path
 
-from dulwich.porcelain import add, commit, push, tag_list
+from dulwich.porcelain import tag_list
 from dulwich.repo import Repo
 from github import Github, Repository, UnknownObjectException
 
 
-def get_version() -> str:
+def get_version(github_repository: Repository) -> str:
     """
     Return the next version.
     This is today’s date in the format ``YYYY.MM.DD.MICRO``.
@@ -23,13 +23,14 @@ def get_version() -> str:
     date_format = '%Y.%m.%d'
     date_str = utc_now.strftime(date_format)
     local_repository = Repo('.')
-    tag_labels = tag_list(repo=local_repository)
-    tag_labels = [item.decode() for item in tag_labels]
+    tag_labels = [tag.name for tag in github_repository.get_tags()]
     today_tag_labels = [
         item for item in tag_labels if item.startswith(date_str)
     ]
     micro = int(len(today_tag_labels))
-    return '{date}.{micro}'.format(date=date_str, micro=micro)
+    new_version = f'{date_str}.{micro}'
+    import pdb; pdb.set_trace()
+    return new_version
 
 
 def update_changelog(version: str, github_repository: Repository) -> None:
@@ -106,9 +107,8 @@ def main() -> None:
     github_token = os.environ['GITHUB_TOKEN']
     github_owner = os.environ['GITHUB_OWNER']
     repository = get_repo(github_token=github_token, github_owner=github_owner)
-    version_str = get_version()
-    update_changelog(version=version_str, github_repository=repository)
-    # commit_and_push(version=version_str, github_repository=repository)
+    version_str = get_version(github_repository=repository)
+    # update_changelog(version=version_str, github_repository=repository)
     # create_github_release(
     #     github_repository=repository,
     #     version=version_str,
