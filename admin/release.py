@@ -46,7 +46,7 @@ def update_changelog(version: str) -> None:
 
 
 def create_github_release(
-    repository: Repository,
+    github_repository: Repository,
     version: str,
 ) -> None:
     """
@@ -62,7 +62,7 @@ def create_github_release(
     )
 
 
-def commit_and_push(version: str, repository: Repository) -> None:
+def commit_and_push(version: str, github_repository: Repository) -> None:
     """
     Commit and push all changes.
     """
