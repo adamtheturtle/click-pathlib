@@ -70,7 +70,11 @@ def create_github_release(
     )
 
 
-def get_repo(github_token: str, github_owner: str) -> Repository:
+def get_github_repository(
+    github_token: str,
+    github_owner: str,
+    github_repository_name: str,
+) -> Repository:
     """
     Get a GitHub repository.
     """
@@ -80,7 +84,7 @@ def get_repo(github_token: str, github_owner: str) -> Repository:
     except UnknownObjectException:
         github_user_or_org = github_client.get_user(github_owner)
 
-    return github_user_or_org.get_repo('click-pathlib')
+    return github_user_or_org.get_repo(github_repository_name)
 
 
 def build() -> None:
@@ -102,6 +106,7 @@ def main() -> None:
     """
     github_token = os.environ['GITHUB_TOKEN']
     github_owner = os.environ['GITHUB_OWNER']
+    github_repository_name = os.environ['GITHUB_REPOSITORY_NAME']
     repository = get_repo(github_token=github_token, github_owner=github_owner)
     version_str = get_version(github_repository=repository)
     update_changelog(version=version_str, github_repository=repository)
