@@ -32,17 +32,28 @@ def get_version() -> str:
     return '{date}.{micro}'.format(date=date_str, micro=micro)
 
 
-def update_changelog(version: str) -> None:
+def update_changelog(version: str, github_repository: Repository) -> None:
     """
     Add a version title to the changelog.
     """
-    changelog = Path('CHANGELOG.rst')
-    changelog_contents = changelog.read_text()
+    changelog_path = Path('CHANGELOG.rst')
+    branch = 'master'
+    changelog_content_file = github_repository.get_contents(
+        path=str(changelog_path),
+        ref=branch,
+    )
+    changelog_bytes = changelog_content_file.decoded_content
+    changelog_contents = changelog_bytes.decode('utf-8')
     new_changelog_contents = changelog_contents.replace(
         'Next\n----',
-        'Next\n----\n\n{version}\n------------'.format(version=version),
+        f'Next\n----\n\n{version}\n------------',
     )
-    changelog.write_text(new_changelog_contents)
+    github_repository.update_file(
+        path=str(changelog_path),
+        message=f'Update for release {version}',
+        content=new_changelog_contents,
+        sha=changelog_content_file.sha,
+    )
 
 
 def create_github_release(
@@ -59,24 +70,6 @@ def create_github_release(
         release_message='See CHANGELOG.rst',
         type='commit',
         object=github_repository.get_commits()[0].sha,
-    )
-
-
-def commit_and_push(version: str, github_repository: Repository) -> None:
-    """
-    Commit and push all changes.
-    """
-    local_repository = Repo('.')
-    paths = ['CHANGELOG.rst']
-    _, ignored = add(paths=paths)
-    assert not ignored
-    message = b'Update for release ' + version.encode('utf-8')
-    commit(message=message)
-    branch_name = 'master'
-    push(
-        repo=local_repository,
-        remote_location=github_repository.ssh_url,
-        refspecs=branch_name.encode('utf-8'),
     )
 
 
@@ -114,13 +107,13 @@ def main() -> None:
     github_owner = os.environ['GITHUB_OWNER']
     repository = get_repo(github_token=github_token, github_owner=github_owner)
     version_str = get_version()
-    update_changelog(version=version_str)
-    commit_and_push(version=version_str, github_repository=repository)
-    create_github_release(
-        github_repository=repository,
-        version=version_str,
-    )
-    build()
+    update_changelog(version=version_str, github_repository=repository)
+    # commit_and_push(version=version_str, github_repository=repository)
+    # create_github_release(
+    #     github_repository=repository,
+    #     version=version_str,
+    # )
+    # build()
 
 
 if __name__ == '__main__':
