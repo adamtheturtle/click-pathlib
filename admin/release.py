@@ -77,10 +77,10 @@ def main() -> None:
     github_repository = github_client.get_repo(
         full_name_or_id=f'{github_owner}/{github_repository_name}',
     )
-    version_str = get_version(github_repository=repository)
-    update_changelog(version=version_str, github_repository=repository)
+    version_str = get_version(github_repository=github_repository)
+    update_changelog(version=version_str, github_repository=github_repository)
     github_repository.create_git_tag_and_release(
-        tag=version,
+        tag=version_str,
         tag_message='Release ' + version_str,
         release_name='Release ' + version_str,
         release_message='See CHANGELOG.rst',
