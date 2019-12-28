@@ -7,8 +7,6 @@ import os
 import subprocess
 from pathlib import Path
 
-from dulwich.porcelain import tag_list
-from dulwich.repo import Repo
 from github import Github, Repository, UnknownObjectException
 
 
@@ -22,14 +20,12 @@ def get_version(github_repository: Repository) -> str:
     utc_now = datetime.datetime.utcnow()
     date_format = '%Y.%m.%d'
     date_str = utc_now.strftime(date_format)
-    local_repository = Repo('.')
     tag_labels = [tag.name for tag in github_repository.get_tags()]
     today_tag_labels = [
         item for item in tag_labels if item.startswith(date_str)
     ]
     micro = int(len(today_tag_labels))
     new_version = f'{date_str}.{micro}'
-    import pdb; pdb.set_trace()
     return new_version
 
 
@@ -108,12 +104,12 @@ def main() -> None:
     github_owner = os.environ['GITHUB_OWNER']
     repository = get_repo(github_token=github_token, github_owner=github_owner)
     version_str = get_version(github_repository=repository)
-    # update_changelog(version=version_str, github_repository=repository)
-    # create_github_release(
-    #     github_repository=repository,
-    #     version=version_str,
-    # )
-    # build()
+    update_changelog(version=version_str, github_repository=repository)
+    create_github_release(
+        github_repository=repository,
+        version=version_str,
+    )
+    build()
 
 
 if __name__ == '__main__':
