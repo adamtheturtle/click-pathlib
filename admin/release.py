@@ -53,23 +53,6 @@ def update_changelog(version: str, github_repository: Repository) -> None:
     )
 
 
-def create_github_release(
-    github_repository: Repository,
-    version: str,
-) -> None:
-    """
-    Create a tag and release on GitHub.
-    """
-    github_repository.create_git_tag_and_release(
-        tag=version,
-        tag_message='Release ' + version,
-        release_name='Release ' + version,
-        release_message='See CHANGELOG.rst',
-        type='commit',
-        object=github_repository.get_commits()[0].sha,
-    )
-
-
 def build() -> None:
     """
     Build source and binary distributions.
@@ -96,9 +79,13 @@ def main() -> None:
     )
     version_str = get_version(github_repository=repository)
     update_changelog(version=version_str, github_repository=repository)
-    create_github_release(
-        github_repository=repository,
-        version=version_str,
+    github_repository.create_git_tag_and_release(
+        tag=version,
+        tag_message='Release ' + version_str,
+        release_name='Release ' + version_str,
+        release_message='See CHANGELOG.rst',
+        type='commit',
+        object=github_repository.get_commits()[0].sha,
     )
     build()
 
