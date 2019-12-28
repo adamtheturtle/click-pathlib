@@ -52,13 +52,13 @@ def create_github_release(
     """
     Create a tag and release on GitHub.
     """
-    repository.create_git_tag_and_release(
+    github_repository.create_git_tag_and_release(
         tag=version,
         tag_message='Release ' + version,
         release_name='Release ' + version,
         release_message='See CHANGELOG.rst',
         type='commit',
-        object=repository.get_commits()[0].sha,
+        object=github_repository.get_commits()[0].sha,
     )
 
 
@@ -75,7 +75,7 @@ def commit_and_push(version: str, github_repository: Repository) -> None:
     branch_name = 'master'
     push(
         repo=local_repository,
-        remote_location=repository.ssh_url,
+        remote_location=github_repository.ssh_url,
         refspecs=branch_name.encode('utf-8'),
     )
 
@@ -115,9 +115,9 @@ def main() -> None:
     repository = get_repo(github_token=github_token, github_owner=github_owner)
     version_str = get_version()
     update_changelog(version=version_str)
-    commit_and_push(version=version_str, repository=repository)
+    commit_and_push(version=version_str, github_repository=repository)
     create_github_release(
-        repository=repository,
+        github_repository=repository,
         version=version_str,
     )
     build()
