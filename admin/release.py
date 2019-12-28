@@ -89,7 +89,7 @@ def build() -> None:
     """
     for args in (
         ['git', 'fetch'],
-        ['rm', '-rf', 'build'],
+        ['git', 'clean', '-fdx'],
         ['python', 'setup.py', 'sdist', 'bdist_wheel'],
         ['twine', 'upload', '-r', 'pypi', 'dist/*'],
     ):
