@@ -19,21 +19,12 @@ def _get_dependencies(requirements_file: Path) -> List[str]:
     return [line for line in lines if not line.startswith('#')]
 
 
-_DIRECT_REQUIRES = _get_dependencies(
+INSTALL_REQUIRES = _get_dependencies(
     requirements_file=Path('requirements.txt'),
 )
 
-_INDIRECT_REQUIRES = _get_dependencies(
-    requirements_file=Path('indirect-requirements.txt'),
-)
-
-INSTALL_REQUIRES = _DIRECT_REQUIRES + _INDIRECT_REQUIRES
-
 DEV_REQUIRES = _get_dependencies(
     requirements_file=Path('dev-requirements.txt'),
-)
-PACKAGING_REQUIRES = _get_dependencies(
-    requirements_file=Path('packaging-requirements.txt'),
 )
 
 setup(
