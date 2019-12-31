@@ -1,4 +1,4 @@
-|Build Status| |codecov| |requirements| |PyPI|
+|Build Status| |codecov| |PyPI|
 
 Click Pathlib
 =============
@@ -47,12 +47,9 @@ Contributing
 See `CONTRIBUTING.rst <./CONTRIBUTING.rst>`_.
 
 .. |Build Status| image:: https://travis-ci.com/adamtheturtle/click-pathlib.svg?branch=master
-    :target: https://travis-ci.com/adamtheturtle/click-pathlib
+   :target: https://travis-ci.com/adamtheturtle/click-pathlib
 .. _@jeremyh: https://github.com/jeremyh
 .. |codecov| image:: https://codecov.io/gh/adamtheturtle/click-pathlib/branch/master/graph/badge.svg
-  :target: https://codecov.io/gh/adamtheturtle/click-pathlib
-.. |requirements| image:: https://requires.io/github/adamtheturtle/click-pathlib/requirements.svg?branch=master
-     :target: https://requires.io/github/adamtheturtle/click-pathlib/requirements/?branch=master
-     :alt: Requirements Status
+   :target: https://codecov.io/gh/adamtheturtle/click-pathlib
 .. |PyPI| image:: https://badge.fury.io/py/click-pathlib.svg
-    :target: https://badge.fury.io/py/click-pathlib
+   :target: https://badge.fury.io/py/click-pathlib
