@@ -46,8 +46,8 @@ Contributing
 
 See `CONTRIBUTING.rst <./CONTRIBUTING.rst>`_.
 
-.. |Build Status| image:: https://travis-ci.com/adamtheturtle/click-pathlib.svg?branch=master
-   :target: https://travis-ci.com/adamtheturtle/click-pathlib
+.. |Build Status| image:: https://github.com/adamtheturtle/click-pathlib/workflows/CI/badge.svg
+   :target: https://github.com/adamtheturtle/click-pathlib/actions
 .. _@jeremyh: https://github.com/jeremyh
 .. |codecov| image:: https://codecov.io/gh/adamtheturtle/click-pathlib/branch/master/graph/badge.svg
    :target: https://codecov.io/gh/adamtheturtle/click-pathlib
