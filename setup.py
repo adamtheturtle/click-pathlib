@@ -26,9 +26,13 @@ DEV_REQUIRES = _get_dependencies(
     requirements_file=Path('dev-requirements.txt'),
 )
 
+SETUP_REQUIRES = _get_dependencies(
+    requirements_file=Path('setup-requirements.txt'),
+)
+
 setup(
     use_scm_version=True,
-    setup_requires=['setuptools_scm', 'setuptools_scm_git_archive'],
+    setup_requires=SETUP_REQUIRES,
     install_requires=INSTALL_REQUIRES,
     extras_require={'dev': DEV_REQUIRES},
 )
