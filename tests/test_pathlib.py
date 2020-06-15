@@ -1,3 +1,7 @@
+"""
+Tests for the pathlib Click extension.
+"""
+
 from pathlib import Path
 
 import click
@@ -7,6 +11,9 @@ import click_pathlib
 
 
 def test_example(tmp_path: Path) -> None:
+    """
+    It is possible to give a path and have it treated as a Pathlib path.
+    """
 
     @click.command('delete')
     @click.argument(
