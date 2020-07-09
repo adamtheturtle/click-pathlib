@@ -27,7 +27,7 @@ jobs:
       - name: "Install dependencies"
         run: |
           python -m pip install --upgrade pip
-          python -m pip install --upgrade --editable .[dev]
+          python -m pip install --no-site-packages --upgrade --editable .[dev]
           sudo apt-get install -y enchant
 
       - name: "Lint"
