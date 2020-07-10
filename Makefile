@@ -8,6 +8,7 @@ SPHINXOPTS := -W
 .PHONY: lint
 lint: \
     check-manifest \
+    doc8 \
     flake8 \
     isort \
     mypy \
