@@ -62,14 +62,6 @@ pyroma:
 vulture:
 	vulture --min-confidence 100 --exclude _vendor --exclude .eggs .
 
-.PHONY: linkcheck
-linkcheck:
-	$(MAKE) -C docs/ linkcheck SPHINXOPTS=$(SPHINXOPTS)
-
-.PHONY: spelling
-spelling:
-	$(MAKE) -C docs/ spelling SPHINXOPTS=$(SPHINXOPTS)
-
 .PHONY: shellcheck
 shellcheck:
 	shellcheck --exclude SC2164,SC1091 */*.sh
