@@ -20,7 +20,7 @@ fix-yapf:
 
 .PHONY: mypy
 mypy:
-	mypy *.py src/ tests/ admin
+	mypy *.py src/ tests/ docs/source/ admin
 
 .PHONY: check-manifest
 check-manifest:
@@ -36,7 +36,11 @@ flake8:
 
 .PHONY: isort
 isort:
-	isort --recursive --check-only
+	isort --check-only .
+
+.PHONY: fix-isort
+fix-isort:
+	isort .
 
 .PHONY: pip-extra-reqs
 pip-extra-reqs:
@@ -48,7 +52,7 @@ pip-missing-reqs:
 
 .PHONY: pylint
 pylint:
-	pylint *.py src/ tests/ admin/
+	pylint *.py src/ tests/ admin/ docs/
 
 .PHONY: pyroma
 pyroma:
