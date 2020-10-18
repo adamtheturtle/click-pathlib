@@ -110,7 +110,6 @@ skip-string-normalization = true
   ignore = [
      "*.md",
      "*.enc",
-     "setup-requirements.txt",
      ".appveyor.yml",
      ".coveragerc",
      ".isort.cfg",
