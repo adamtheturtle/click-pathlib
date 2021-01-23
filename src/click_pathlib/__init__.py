@@ -2,8 +2,10 @@
 Custom click types.
 """
 
+from __future__ import annotations
+
 import pathlib
-from typing import Any, Optional
+from typing import Any
 
 import click
 
@@ -16,8 +18,8 @@ class Path(click.Path):
     def convert(
         self,
         value: str,
-        param: Optional[click.core.Parameter],
-        ctx: Optional[click.core.Context],
+        param: click.core.Parameter | None,
+        ctx: click.core.Context | None,
     ) -> Any:
         """
         Return a ``Path`` from the string ``click`` would have created with
