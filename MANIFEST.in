@@ -1,3 +1,3 @@
 include src/click_pathlib/py.typed
-include *requirements.txt
+include requirements/*.txt
 include pyproject.toml
