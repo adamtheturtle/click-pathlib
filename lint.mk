@@ -36,11 +36,11 @@ fix-isort:
 
 .PHONY: pip-extra-reqs
 pip-extra-reqs:
-	pip-extra-reqs src/
+	pip-extra-reqs --requirements-file=requirements/requirements.txt src/
 
 .PHONY: pip-missing-reqs
 pip-missing-reqs:
-	pip-missing-reqs src/
+	pip-missing-reqs --requirements-file=requirements/requirements.txt src/
 
 .PHONY: pylint
 pylint:
