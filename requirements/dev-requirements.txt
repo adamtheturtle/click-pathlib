@@ -13,7 +13,7 @@ pydocstyle==6.1.1
 pyenchant==3.2.1
 pylint==2.11.1
 pyroma==3.2
-pytest-cov==2.12.1  # Measure code coverage
+pytest-cov==3.0.0  # Measure code coverage
 pytest==6.2.5
 twine==3.4.2
 types-setuptools==57.4.0
