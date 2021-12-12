@@ -13,7 +13,6 @@ lint: \
     pip-extra-reqs \
     pip-missing-reqs \
     pyroma \
-    shellcheck \
     vulture \
     pylint \
     pydocstyle \
