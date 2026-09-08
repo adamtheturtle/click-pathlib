@@ -6,8 +6,7 @@ Deprecation Notice
    **DEPRECATED**
 
    This package is no longer needed with Click >= 8.0.0.
-   In those versions of Click, The ``Path`` param type can be passed:
-   ``path_type=pathlib.Path`` to return a path object instead of a string.
+   In those versions of Click, The ``Path`` param type can be passed: ``path_type=pathlib.Path`` to return a path object instead of a string.
 
 
 Click Pathlib
